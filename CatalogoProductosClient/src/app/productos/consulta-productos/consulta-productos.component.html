@@ -1,0 +1,28 @@
+<a class="btn btn-primary" routerLink="/producto">Crear Producto</a>
+<br />
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productos">
+            <td>{{p.Codigo}}</td>
+            <td>{{p.Nombre}}</td>
+            <td>{{p.Descripcion}}</td>
+            <td>{{p.TipoProducto}}</td>
+            <td>
+                <a class="btn btn-secondary" routerLink="/producto/{{p.Id}}" routerLinkActive="router-link-active" >Editar</a>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<label *ngIf="cargando">Un momento porfavor...</label>

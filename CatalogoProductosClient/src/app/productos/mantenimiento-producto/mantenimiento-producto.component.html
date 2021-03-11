@@ -1,0 +1,41 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+
+    <fieldset>
+        <legend>Datos Generales</legend>
+        <div class="row">
+            <div class="col">
+                <label>Codigo</label>
+                <input type="text" class="form-control" required formControlName="codigo">
+            </div>
+            <div class="col">
+                <label>Nombre</label>
+                <input type="text" class="form-control" required  formControlName="nombre">
+            </div>
+            <div class="col">
+                <label>Descripcion</label>
+                <input type="text" class="form-control required"  formControlName="descripcion">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Tipo Producto</label>
+                <select class="form-control" required  formControlName="tipoProducto">
+                    <option value="{{null}}">--Seleccione--</option>
+                    <option *ngFor="let tp of TiposProductos" value="{{tp.Id}}">{{tp.Nombre}}</option>
+                </select>
+                <!-- {{TiposProductos |json}}
+                <br><br>
+                {{this.formulario.get('tipoProducto')?.value | json }} -->
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-danger" *ngIf="Producto.Id" (click) = "Eliminar()"  [disabled] = "guardando">Eliminar</button> 
+                <span *ngIf="Producto.Id">| </span>
+                <button class="btn btn-primary" [disabled] = "guardando">Guardar</button>
+                
+            </div>
+        </div>
+    </fieldset>
+</form>
